@@ -1,0 +1,61 @@
+#single-video-page{
+    height: calc(100vh - 60px);
+    width: 40vw;
+    margin: auto;
+    position: relative;
+}
+
+#video{
+    width: 100%;
+    aspect-ratio: 3/2;
+}
+#actions{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    justify-content: space-between;
+    position: relative;
+}
+#actions > div{
+    display: flex;
+}
+#actions > div button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    font-size: 1.5rem;
+    margin: 0px 5px;
+}
+#single-video-page h3{
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+.single-note{
+    
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    background-color: whitesmoke;
+}
+.single-note span{
+    display: flex;
+}
+.single-note span:last-child > *{
+    display: flex;
+    height: 100%;
+    margin: 0px 10px;
+    font-size: 1.3rem;
+}
+#notes-section{
+    position: relative;
+    min-height: 500px;
+}

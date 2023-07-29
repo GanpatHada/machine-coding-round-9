@@ -1,0 +1,32 @@
+#add-notes-modal{
+    position: absolute;
+    height: 180px;
+    width: 260px;
+    top: 10px;
+    right: 5px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 3;
+    padding: 20px;
+    padding-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+#add-notes-modal span{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+#add-notes-modal input{
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+}
+#add-notes-modal button{
+    height: 40px;
+    width: 100%;
+    background-color: skyblue;
+    margin-top: 20px;
+}
