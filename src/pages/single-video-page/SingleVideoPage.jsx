@@ -7,13 +7,17 @@ import { RiPlayListAddFill} from "react-icons/ri";
 import AddNotesModal from "../../components/addNotesModal/AddNotesModal";
 import { DataContext } from "../../context/DataContext";
 
-const SingleNote=({note})=>{
+const SingleNote=({note,setOpenModal})=>{
+    const handleEditModal=()=>{
+        return setOpenModal(note.noteId)
+    }
+    const{deleteNote}=useContext(DataContext)
     return(
         <div className="single-note">
             <span>{note.note}</span>
             <span>
-                <MdModeEditOutline/>
-                <MdDelete/>
+                <MdModeEditOutline onClick={handleEditModal} />
+                <MdDelete onClick={()=>deleteNote(note.noteId)}/>
             </span>
         </div>
     )
@@ -21,7 +25,7 @@ const SingleNote=({note})=>{
 
 const SingleVideoPage = () => {
   const{notes}=useContext(DataContext)   
-  const[openModal,setOpenModal]=useState(false)  
+  const[openModal,setOpenModal]=useState(false) 
   const { videoId } = useParams();
   const currentVideoNotes=notes.filter(note=>note.videoId===videoId)
   console.log(typeof videoId);
@@ -54,12 +58,12 @@ const SingleVideoPage = () => {
       </div>
       
       <section id="notes-section">
-      {openModal&&<AddNotesModal onClose={()=>setOpenModal(false)} videoId={videoId}/>}
+      {openModal&&<AddNotesModal onClose={()=>setOpenModal(false)} videoId={videoId} openModal={openModal}/>}
       <h3>My Notes</h3>
       <div>
         {
             currentVideoNotes.map(note=>{
-                return <SingleNote note={note} key={note.noteId}/> 
+                return <SingleNote note={note} key={note.noteId} setOpenModal={setOpenModal}/> 
             })
         }
       </div>

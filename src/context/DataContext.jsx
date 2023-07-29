@@ -39,12 +39,29 @@ export function DataProvider({ children }) {
     localStorage.setItem('notes',JSON.stringify(newNotes));
     setNotes(newNotes)
   }
+
+  const deleteNote=(noteId)=>{
+    let newNotes=notes.filter(note=>note.noteId!==noteId)
+    localStorage.setItem('notes',JSON.stringify(newNotes));
+    setNotes(newNotes)
+  }
+
+  const editNote=(noteId,value)=>{
+    let newNotes=notes;
+    newNotes=notes.map(note=>{
+        if(note.noteId===noteId)
+           return {...note,note:value}
+        return {...note}   
+    })
+    localStorage.setItem('notes',JSON.stringify(newNotes));
+    setNotes(newNotes)
+  }
   
   
   return (
     <DataContext.Provider
       value={{
-        watchLaterList,addToWatchLater,removeFromWatchLater,addNote,notes
+        watchLaterList,addToWatchLater,removeFromWatchLater,addNote,notes,deleteNote,editNote
       }}
     >
       {children}
