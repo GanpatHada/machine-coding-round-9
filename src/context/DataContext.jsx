@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-
+import { videos } from '../Data'
 export const DataContext = createContext();
 export function DataProvider({ children }) {
   //states here
@@ -20,15 +20,16 @@ export function DataProvider({ children }) {
 
   const [watchLaterList,setWatchLaterList]=useState(getWatchLaterList());
   const[notes,setNotes]=useState(getMyNotes())
-
  
-  const addToWatchLater=(video)=>{
+  const addToWatchLater=(videoId)=>{
+     let video=videos.find(video=>video._id===videoId)
      let newWatchLaterList=[...watchLaterList,video]
      localStorage.setItem('watchLater',JSON.stringify(newWatchLaterList));
      setWatchLaterList(newWatchLaterList)
   }
 
-  const removeFromWatchLater=(video)=>{
+  const removeFromWatchLater=(videoId)=>{
+    let video=videos.find(video=>video._id===videoId)
     let newWatchLaterList=watchLaterList.filter(eachVideo=>eachVideo._id!==video._id)
     localStorage.setItem('watchLater',JSON.stringify(newWatchLaterList));
     setWatchLaterList(newWatchLaterList)

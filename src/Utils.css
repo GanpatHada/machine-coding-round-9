@@ -6,11 +6,16 @@
     overflow-y: auto;
 
 }
+body{
+    background-color: black;
+}
+:root{
+    --primary-color:#44daff;
+}
 img{
     height: 100%;
     width: 100%;
     object-fit: cover;
-
 }
 button{
     background-color: white;
@@ -20,4 +25,34 @@ button{
 a{
     text-decoration: none;
     color: inherit;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-y: auto;
+}
+.content a{
+    margin: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.082);
+    transition: 0.2s;
+}
+.content a:hover{
+    background-color: rgba(255, 255, 255, 0.144);
+    
+}
+.content a:hover img{
+    transform: scale(1.05);
+    filter: brightness(110%);
+}
+main h3{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    color: white;
+    
 }

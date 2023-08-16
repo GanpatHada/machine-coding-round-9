@@ -10,7 +10,7 @@ import SingleVideoPage from "../../pages/single-video-page/SingleVideoPage";
 
 const Router = () => {
   return (
-    <main>
+    <section id='routes'>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/:category" element={<ListingPage/>}></Route>
@@ -18,7 +18,7 @@ const Router = () => {
         <Route path="/watch-later" element={<WatchLaterPage/>}></Route>
         <Route path="/explore" element={<ExplorePage/>}></Route>
       </Routes>
-    </main>
+    </section>
   );
 };
 

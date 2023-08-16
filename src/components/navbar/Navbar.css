@@ -1,7 +1,6 @@
-header{
+#top-header{
     height: 60px;
     width: 100vw;
-    border: 1px solid lightgray;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -12,8 +11,10 @@ header{
     position: fixed;
     top: 0px;
     left: 0px;
+    color: white;
+    
 
 }
-header span{
-    color: red;
+#top-header span{
+    color: var(--primary-color);
 }

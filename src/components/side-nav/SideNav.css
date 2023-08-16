@@ -1,10 +1,9 @@
-nav{
-    border-right: 1px solid lightgray;
+nav{ 
     width: 230px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 110px);
     position: fixed;
-    top: 60px;
-    left: 0px;
+    top: 110px;
+    left: 0px;  
 }
 nav ul{
     height: 100%;
@@ -12,6 +11,7 @@ nav ul{
     display: flex;
     flex-direction: column;
     padding: 10px;
+    
 }
 nav ul li{
     list-style: none;
@@ -28,6 +28,8 @@ nav ul li div{
     align-items: center;
     justify-content: flex-start;
     height: 100%;
+    color: rgb(209, 209, 209);
+    padding-left: 10px;
 }
 nav ul li div span{
     font-size: 1.5rem;
@@ -38,5 +40,8 @@ nav ul li div span{
     justify-content: center;
 }
 nav ul li div:hover{
-    background-color: whitesmoke;
+    background-color: rgb(32, 32, 32);
+}
+.active div{
+    color: var(--primary-color);
 }

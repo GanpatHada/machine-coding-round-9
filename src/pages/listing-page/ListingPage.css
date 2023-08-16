@@ -1,11 +1,4 @@
-#listing-page h3{
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 10px;
-    border-bottom: 1px solid lightgray;
-}
+
 #listing-page #listing-page-content{
     display: flex;
     flex-wrap: wrap;

@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './WatchLaterPage.css'
+import { DataContext } from '../../context/DataContext'
+import { Link } from 'react-router-dom'
+import Card from '../../components/card/Card'
 const WatchLaterPage = () => {
+  const{watchLaterList}=useContext(DataContext)
   return (
-    <div id='watch-later-page'>
+    <main id='watch-later-page'>
         <h3>Watch Later</h3>
-        <div id="watch-later-content">
-            
+        <div className="content">
+          {
+            watchLaterList.map(eachVideo=><Link to={`/video/${eachVideo._id}`}  key={eachVideo._id}>
+              <Card info={eachVideo} mode='video'/>
+            </Link>)
+          } 
         </div>
-    </div>
+    </main>
   )
 }
 
