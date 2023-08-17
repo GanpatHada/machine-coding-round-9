@@ -1,61 +1,93 @@
 #single-video-page{
-    height: calc(100vh - 60px);
-    width: 40vw;
-    margin: auto;
+    min-height: calc(100vh - 80px);
+    width: calc(100vw - 230px);
     position: relative;
-}
+    display: flex;
 
+}
+#video-box{
+    flex: 3;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+}
+#suggestion-box{
+    flex: 1;
+    background-color: pink;
+    flex-shrink: 0;
+}
 #video{
     width: 100%;
-    aspect-ratio: 3/2;
+    aspect-ratio: 3/1.5;
+    border: none;
 }
 #actions{
-    height: 50px;
+    height: 70px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgb(194, 194, 194);
     justify-content: space-between;
     position: relative;
+    padding: 0px 10px; 
+    border-bottom: 1px solid gray;  
+}
+#actions h4{
+    color: white;
 }
 #actions > div{
     display: flex;
 }
-#actions > div button{
+#modal-section{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: black;
+    box-shadow: rgba(255, 255, 255, 0.26) 0px 0px 8px 0px,rgba(255, 255, 255, 0.26) 0px 0px 8px 0px;
+}
+#single-video-page button{
     display: flex;
     align-items: center;
     justify-content: center;
-    display: block;
     height: 40px;
     width: 40px;
+    border-radius: 50%;
     overflow: hidden;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0px 5px;
+    background-color: transparent;
+    color: whitesmoke;
+    transition: 0.2s;
 }
-#single-video-page h3{
+#single-video-page > div button:hover{
+    background-color: rgba(128, 128, 128, 0.438);
+}
+
+#notes-section h3{
+    color: whitesmoke;
+    font-weight: bold;
     height: 50px;
     display: flex;
     align-items: center;
-
+    margin-top: 20px;   
 }
 .single-note{
     
-    padding: 20px 10px;
-    margin-bottom: 10px;
+    padding: 20px 0px;
     display: flex;
     align-items: center;
     justify-content:space-between;
-    background-color: whitesmoke;
+    color: lightgray;
+    border-bottom: 0.01rem solid rgba(255, 255, 255, 0.13);
 }
 .single-note span{
     display: flex;
-}
-.single-note span:last-child > *{
-    display: flex;
-    height: 100%;
-    margin: 0px 10px;
-    font-size: 1.3rem;
+    max-width: calc(100% - 100px);
 }
 #notes-section{
+    padding-bottom: 20px;
     position: relative;
-    min-height: 500px;
 }
+
+

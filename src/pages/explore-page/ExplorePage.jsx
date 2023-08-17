@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./ExplorePage.css";
 import { videos } from "../../Data";
 import Card from "../../components/card/Card";
 import { Link } from "react-router-dom";
+import { DataContext } from "../../context/DataContext";
 const ExplorePage = () => {
-  const [search, setSearch] = useState("");
+  const{search}=useContext(DataContext);
   const filterVideos = () => {
     let filteredVideos = videos;
     filteredVideos = filteredVideos.filter((eachVideo) =>
@@ -15,17 +16,9 @@ const ExplorePage = () => {
 
   return (
     <main id="explore-page">
-      <header>
+      {/* <header>
         <h3>Explore</h3>
-        <div id="input-wrapper">
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            type="search"
-            placeholder="Search video by title"
-          />
-        </div>
-      </header>
+      </header> */}
       <div id="explore-page-content">
         {filterVideos().length>0?<div className="content">
           {filterVideos().map((eachVideo) => {

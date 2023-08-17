@@ -32,6 +32,11 @@ a{
     height: 100%;
     overflow-y: auto;
 }
+.all-centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .content a{
     margin: 10px;
     border-radius: 8px;
@@ -55,4 +60,12 @@ main h3{
     padding-left: 10px;
     color: white;
     
+}
+*::-webkit-scrollbar{
+    background-color: transparent;
+    width: 5px;
+}
+*::-webkit-scrollbar-thumb{
+    background-color: var(--primary-color);
+    border-radius: 2.5px;
 }

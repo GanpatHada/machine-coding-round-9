@@ -17,7 +17,7 @@ export function DataProvider({ children }) {
        return JSON.parse(notes)
     return [] 
   }
-
+  const [search,setSearch]=useState('')
   const [watchLaterList,setWatchLaterList]=useState(getWatchLaterList());
   const[notes,setNotes]=useState(getMyNotes())
  
@@ -62,7 +62,7 @@ export function DataProvider({ children }) {
   return (
     <DataContext.Provider
       value={{
-        watchLaterList,addToWatchLater,removeFromWatchLater,addNote,notes,deleteNote,editNote
+        watchLaterList,addToWatchLater,removeFromWatchLater,addNote,notes,deleteNote,editNote,search,setSearch
       }}
     >
       {children}

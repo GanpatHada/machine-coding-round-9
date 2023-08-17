@@ -1,19 +1,10 @@
-import React, { useContext } from "react";
+
 import "./Card.css";
-import { MdOutlineWatchLater } from "react-icons/md";
-import { DataContext } from "../../context/DataContext";
+
+
+import WatchLaterButton from "../watch-later-button/WatchLaterButton";
 const Card = ({ info, mode }) => {
-  const { watchLaterList, addToWatchLater, removeFromWatchLater } =
-    useContext(DataContext);
-  const isVideoPresentInWatchLater = (videoId) =>
-    watchLaterList.find((eachVideo) => eachVideo._id === videoId);
-  const handleWatchLater = (videoId,e) => {
-    
-    isVideoPresentInWatchLater(videoId)
-      ? removeFromWatchLater(videoId)
-      : addToWatchLater(videoId);
-      e.stopPropagation()  
-  };
+  
 
   return (
     <div className="card">
@@ -25,9 +16,8 @@ const Card = ({ info, mode }) => {
         <h6>{info.category}</h6>
         {/* {creator&&views&&<span>{views} | {creator}</span>} */}
       </section>
-      {mode==='video'&&<section className="watch-later" style={{color:isVideoPresentInWatchLater(info._id)?'#44daff':'white'}} onClick={(e)=>handleWatchLater(info._id,e)} title='watch-later'>
-          <MdOutlineWatchLater />
-      </section>}
+      {mode==='video'&&<button className="watch-later">
+        <WatchLaterButton info={info}/></button>}
     </div>
   );
 };
