@@ -6,13 +6,12 @@
     align-items: center;
     padding:0px 20px;
     font-size: 1.5rem;
-    color: black;
     font-weight: bold;
     position: fixed;
     top: 0px;
     left: 0px;
-    color: white;  
-     
+    color: white;    
+    background:linear-gradient(to right,rgb(0, 37, 61),black);
 }
 #top-header span{
     color: var(--primary-color);

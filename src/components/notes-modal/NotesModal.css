@@ -18,15 +18,17 @@
     cursor: pointer;
     filter: invert();
 }
-#add-notes-modal input{
+textarea{
+    resize: none;
     display: inline-block;
-    height: 40px;
     width: 100%;
-    padding-left: 10px;
-    background-color: transparent;
-    border: 1px solid gray;
+    padding: 10px 10px;
+    background-color: rgba(128, 128, 128, 0.267);
     border-radius: 5px;
     color: white;
+    border: none;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 #add-notes-modal input:focus{
     outline: none;

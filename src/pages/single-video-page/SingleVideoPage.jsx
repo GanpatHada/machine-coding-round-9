@@ -12,6 +12,7 @@ import { RiPlayListAddFill } from "react-icons/ri";
 import NotesModal from "../../components/notes-modal/NotesModal";
 import { DataContext } from "../../context/DataContext";
 import WatchLaterButton from "../../components/watch-later-button/WatchLaterButton";
+import PlayListModal from "../../components/playlist-modal/PlayListModal";
 
 const SingleNote = ({ note,handleEditNoteModal }) => {
   
@@ -35,7 +36,8 @@ const SingleNote = ({ note,handleEditNoteModal }) => {
 
 const SingleVideoPage = () => {
   const { notes } = useContext(DataContext);
-  const [openModal, setOpenModal] = useState(false);
+  const [openNotesModal, setOpenNotesModal] = useState(false);
+  const[openPlaylistModal,setOpenPlaylistModal]=useState(false)
   const [noteId,setNoteId]=useState(null)
   const [mode,setMode]=useState(null)
   const { videoId } = useParams();
@@ -50,19 +52,28 @@ const SingleVideoPage = () => {
   const handleEditNoteModal=(noteId)=>{
     setNoteId(noteId);
     setMode('edit note')
-    setOpenModal(true);
+    setOpenNotesModal(true);
   }
 
   const handleAddNoteModal=()=>{
+    setOpenPlaylistModal(false)
     setMode('add note');
-    setOpenModal(true);
+    setOpenNotesModal(!openNotesModal);
   }
+
+  const handlePlayListModal=()=>{
+     setOpenNotesModal(false);
+     setOpenPlaylistModal(!openPlaylistModal)    }
  
   const closeNotesModal=()=>{
     setMode(null);
     setNoteId(null);
-    setOpenModal(false);
+    setOpenNotesModal(false);
   } 
+
+  const closePlaylistModal=()=>{
+    setOpenPlaylistModal(false)
+  }
 
 
   const { title, src, creator, thumbnail } = currentVideo;
@@ -81,18 +92,23 @@ const SingleVideoPage = () => {
             <button>
               <WatchLaterButton info={currentVideo} />
             </button>
-            <button>
+            <button onClick={handlePlayListModal}>
               <RiPlayListAddFill />
             </button>
-            <button>
-              <FaRegEdit onClick={handleAddNoteModal} />
+            <button onClick={handleAddNoteModal}>
+              <FaRegEdit  />
             </button>
           </div>
         </div>
         <section id="notes-section">
-          {openModal&&<section id="modal-section">
+          {openNotesModal&&<section id="notes-modal-section" className="modal-section">
             <NotesModal mode={mode} closeNotesModal={closeNotesModal} noteId={noteId} videoId={Number(videoId)}/>
           </section>}
+          {openPlaylistModal&&<section id="playlist-modal-section" className="modal-section">
+             <PlayListModal videoId={Number(videoId)} closePlaylistModal={closePlaylistModal}/>
+          </section>
+
+          }
           <h3>My Notes</h3>
           <div>
             {

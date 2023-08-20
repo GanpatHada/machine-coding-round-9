@@ -7,6 +7,8 @@ import ListingPage from "../../pages/listing-page/ListingPage";
 import WatchLaterPage from "../../pages/watch-later-page/WatchLaterPage";
 import ExplorePage from "../../pages/explore-page/ExplorePage";
 import SingleVideoPage from "../../pages/single-video-page/SingleVideoPage";
+import Playlists from "../../pages/playlists/Playlists";
+import SinglePlaylistPage from "../../pages/single-playlist-page/SinglePlaylistPage";
 
 const Router = () => {
   return (
@@ -17,6 +19,9 @@ const Router = () => {
         <Route path="/video/:videoId" element={<SingleVideoPage/>}></Route>
         <Route path="/watch-later" element={<WatchLaterPage/>}></Route>
         <Route path="/explore" element={<ExplorePage/>}></Route>
+        <Route path="/playlists" element={<Playlists/>}></Route>
+        <Route path="/playlists/:playlistId" element={<SinglePlaylistPage/>}></Route>
+
       </Routes>
     </section>
   );

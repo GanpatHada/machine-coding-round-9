@@ -5,8 +5,8 @@ import { v4 as uuid } from "uuid";
 import { DataContext } from "../../context/DataContext";
 const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
   const { addNote, notes, editNote } = useContext(DataContext);
-  
-
+  const[height,setHeight]=useState('38px')
+  const inputRef=useRef(null)
   const getNoteText=()=>notes.find(note=>note.noteId===noteId).note;
 
   const getValue=()=>{
@@ -41,13 +41,27 @@ const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
        return handleEditNote()   
   }
 
-  const [note,setNote]=useState('')
+  const handleHeightOfInput=()=>{
+      inputRef.current.style.height='38px'
+      inputRef.current.style.height= inputRef.current.scrollHeight+'px'
+  }
 
+  const handleNotesInputChange = e=>{
+    setNote(e.target.value)
+    handleHeightOfInput()
+  }
+
+  const [note,setNote]=useState('')
+  
+  const getRows=()=>{
+    return note.length>32?2:1
+  }
 
   
   
   useEffect(()=>{
      setNote(getValue())
+     inputRef.current.style.height='38px'
   },[mode])
 
   return (
@@ -56,7 +70,7 @@ const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
         <GrClose />
       </span>
       <h4>{mode}</h4>
-      <input type="text" value={note} onChange={(e)=>setNote(e.target.value)} placeholder="write note" />
+      <textarea maxLength={120} ref={inputRef} value={note} onChange={handleNotesInputChange} placeholder="write note"></textarea> 
       <button disabled={isButtonDisabled()} onClick={hanldeNotesModalButton}>{mode.split(' ')[0]}</button>
     </div>
   );

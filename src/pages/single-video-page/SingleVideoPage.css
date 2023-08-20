@@ -36,16 +36,23 @@
 #actions > div{
     display: flex;
 }
-#modal-section{
+.modal-section{
     position: absolute;
     top: 10px;
-    right: 10px;
     z-index: 4;
     border-radius: 8px;
     overflow: hidden;
     background-color: black;
     box-shadow: rgba(255, 255, 255, 0.26) 0px 0px 8px 0px,rgba(255, 255, 255, 0.26) 0px 0px 8px 0px;
     height: fit-content;
+}
+#notes-modal-section{
+    
+    right: 10px;
+    
+}
+#playlist-modal-section{
+    right: 60px;
 }
 #single-video-page button{
     display: flex;

@@ -29,14 +29,16 @@ const SideNav = () => {
             </div>
           </li>
           </NavLink>
+          <NavLink to='/playlists'>
           <li className="navs">
             <div>
               <span>
                 <RiPlayListAddFill />
               </span>
-              playlist
+              playlists
             </div>
           </li>
+          </NavLink>
           <NavLink to='/watch-later'>
             <li className="navs">
               <div>
