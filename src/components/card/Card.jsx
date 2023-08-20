@@ -14,6 +14,7 @@ const Card = ({ info, mode }) => {
       <section className="card-info-section">
         {mode !== "category" && <h5>{info.title}</h5>}
         <h6>{info.category}</h6>
+        {mode!=='category'&&<span>{info.views} views | {info.creator}</span>}
         {/* {creator&&views&&<span>{views} | {creator}</span>} */}
       </section>
       {mode==='video'&&<button className="watch-later">

@@ -13,24 +13,17 @@ import NotesModal from "../../components/notes-modal/NotesModal";
 import { DataContext } from "../../context/DataContext";
 import WatchLaterButton from "../../components/watch-later-button/WatchLaterButton";
 
-const SingleNote = ({ note, setOpenModal }) => {
-  const handleEditModal = () => {
-    return setOpenModal(note.noteId);
-  };
+const SingleNote = ({ note,handleEditNoteModal }) => {
+  
   const { deleteNote } = useContext(DataContext);
   return (
     <div className="single-note">
       <span>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic fugiat
-        quasi sit eveniet! Ex deleniti provident ipsum mollitia dolor
-        consequuntur maiores consequatur pariatur, reprehenderit incidunt, esse
-        rerum, odit corporis corrupti? Animi doloribus incidunt dicta officia
-        molestiae obcaecati delectus, accusamus in laboriosam similique velit
-        temporibus iste unde, recusandae id facere. Laborum!
+       {note.note}
       </span>
       <span>
         <button>
-          <MdModeEditOutline onClick={handleEditModal} />
+          <MdModeEditOutline onClick={()=>handleEditNoteModal(note.noteId)} />
         </button>
         <button>
           <MdDelete onClick={() => deleteNote(note.noteId)} />
@@ -43,12 +36,35 @@ const SingleNote = ({ note, setOpenModal }) => {
 const SingleVideoPage = () => {
   const { notes } = useContext(DataContext);
   const [openModal, setOpenModal] = useState(false);
+  const [noteId,setNoteId]=useState(null)
+  const [mode,setMode]=useState(null)
   const { videoId } = useParams();
-  const currentVideoNotes = notes.filter((note) => note.videoId === videoId);
+  
+  
+  const currentVideoNotes = notes.filter((note) => note.videoId === Number(videoId));
   console.log(typeof videoId);
   const currentVideo = videos.find(
     (eachVideo) => eachVideo._id === Number(videoId)
   );
+
+  const handleEditNoteModal=(noteId)=>{
+    setNoteId(noteId);
+    setMode('edit note')
+    setOpenModal(true);
+  }
+
+  const handleAddNoteModal=()=>{
+    setMode('add note');
+    setOpenModal(true);
+  }
+ 
+  const closeNotesModal=()=>{
+    setMode(null);
+    setNoteId(null);
+    setOpenModal(false);
+  } 
+
+
   const { title, src, creator, thumbnail } = currentVideo;
   return (
     <div id="single-video-page">
@@ -65,26 +81,26 @@ const SingleVideoPage = () => {
             <button>
               <WatchLaterButton info={currentVideo} />
             </button>
-            <button onClick={() => setOpenModal(true)}>
+            <button>
               <RiPlayListAddFill />
             </button>
             <button>
-              <FaRegEdit />
+              <FaRegEdit onClick={handleAddNoteModal} />
             </button>
           </div>
         </div>
         <section id="notes-section">
-          <section id="modal-section">
-            <NotesModal mode='add note'/>
-          </section>
-
+          {openModal&&<section id="modal-section">
+            <NotesModal mode={mode} closeNotesModal={closeNotesModal} noteId={noteId} videoId={Number(videoId)}/>
+          </section>}
           <h3>My Notes</h3>
           <div>
-            <SingleNote setOpenModal={setOpenModal} />
-            <SingleNote setOpenModal={setOpenModal} />
-            <SingleNote setOpenModal={setOpenModal} />
-            <SingleNote setOpenModal={setOpenModal} />
-            <SingleNote setOpenModal={setOpenModal} />
+            {
+              currentVideoNotes.map(note=>{
+                return  <SingleNote key={note.noteId} note={note} handleEditNoteModal={handleEditNoteModal} />
+              })
+            }
+           
           </div>
         </section>
       </div>

@@ -69,3 +69,6 @@ main h3{
     background-color: var(--primary-color);
     border-radius: 2.5px;
 }
+button:disabled{
+    cursor: not-allowed;
+}
