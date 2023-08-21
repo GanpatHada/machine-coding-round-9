@@ -13,6 +13,7 @@ import NotesModal from "../../components/notes-modal/NotesModal";
 import { DataContext } from "../../context/DataContext";
 import WatchLaterButton from "../../components/watch-later-button/WatchLaterButton";
 import PlayListModal from "../../components/playlist-modal/PlayListModal";
+import LandscapeCard from "../../components/landscape-card/LandscapeCard";
 
 const SingleNote = ({ note,handleEditNoteModal }) => {
   
@@ -120,7 +121,14 @@ const SingleVideoPage = () => {
           </div>
         </section>
       </div>
-      <div id="suggestion-box"></div>
+      <div id="suggestion-box">
+        {
+          videos.map(video=>{
+            return <LandscapeCard key={video._id} info={video}/>
+          })
+        }
+        
+      </div>
     </div>
   );
 };

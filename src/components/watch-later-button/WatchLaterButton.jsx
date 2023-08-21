@@ -16,6 +16,7 @@ const isVideoPresentInWatchLater = (videoId) =>{
 
 const handleWatchLater = (videoId,e) => {
     e.preventDefault()
+    e.stopPropagation()
     isVideoPresentInWatchLater(videoId)
       ? removeFromWatchLater(videoId)
       : addToWatchLater(videoId);

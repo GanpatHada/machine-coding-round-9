@@ -6,15 +6,17 @@
 
 }
 #video-box{
-    flex: 3;
-    flex-shrink: 1;
+    flex: 2.8;
+    flex-shrink: 2;
     display: flex;
     flex-direction: column;
 }
 #suggestion-box{
-    flex: 1;
-    background-color: pink;
+    flex: 1.2;
     flex-shrink: 0;
+    padding: 10px;
+    height: 100%;
+    overflow: auto;
 }
 #video{
     width: 100%;
@@ -22,7 +24,7 @@
     border: none;
 }
 #actions{
-    height: 70px;
+    height: 4.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,7 +56,7 @@
 #playlist-modal-section{
     right: 60px;
 }
-#single-video-page #actions button{
+#single-video-page #actions button,.single-note button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,17 +70,17 @@
     color: whitesmoke;
     transition: 0.2s;
 }
-#single-video-page > div button:hover{
+#single-video-page #actions button:hover,.single-note button:hover{
     background-color: rgba(128, 128, 128, 0.438);
 }
 
 #notes-section h3{
     color: whitesmoke;
     font-weight: bold;
-    height: 50px;
+    height: 3.1rem;
     display: flex;
     align-items: center;
-    margin-top: 20px;   
+    margin-top: 1.4rem;   
 }
 .single-note{
     
@@ -98,8 +100,6 @@
     position: relative;
     min-height: 400px;
 }
-#notes-section div{
-    
-}
+
 
 

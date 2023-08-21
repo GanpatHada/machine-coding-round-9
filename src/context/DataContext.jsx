@@ -68,6 +68,15 @@ export function DataProvider({ children }) {
 
 
   }
+  const editPlaylist=(playlistId,name)=>{
+     let tempPlaylists=playlists.map(playlist=>{
+      if(playlist._id===playlistId)
+         return {...playlist,name}
+      return {...playlist}   
+     })
+     localStorage.setItem("playlists", JSON.stringify(tempPlaylists));
+    setPlaylists(tempPlaylists);
+  }
 
   const addNote = (noteObj) => {
     let newNotes = [...notes, noteObj];
@@ -131,6 +140,7 @@ export function DataProvider({ children }) {
         setSearch,
         createNewPlaylist,
         deletePlaylist,
+        editPlaylist,
         playlists,
         addToPlaylist,
         deleteVideoFromPlaylist,

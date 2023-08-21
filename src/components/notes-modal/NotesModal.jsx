@@ -5,7 +5,6 @@ import { v4 as uuid } from "uuid";
 import { DataContext } from "../../context/DataContext";
 const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
   const { addNote, notes, editNote } = useContext(DataContext);
-  const[height,setHeight]=useState('38px')
   const inputRef=useRef(null)
   const getNoteText=()=>notes.find(note=>note.noteId===noteId).note;
 
@@ -42,7 +41,7 @@ const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
   }
 
   const handleHeightOfInput=()=>{
-      inputRef.current.style.height='38px'
+      inputRef.current.style.height='2.4rem'
       inputRef.current.style.height= inputRef.current.scrollHeight+'px'
   }
 
@@ -53,15 +52,13 @@ const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
 
   const [note,setNote]=useState('')
   
-  const getRows=()=>{
-    return note.length>32?2:1
-  }
+  
 
   
   
   useEffect(()=>{
      setNote(getValue())
-     inputRef.current.style.height='38px'
+     inputRef.current.style.height='2.4rem'
   },[mode])
 
   return (
