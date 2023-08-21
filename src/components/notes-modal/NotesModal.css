@@ -33,7 +33,7 @@ textarea{
 #add-notes-modal input:focus{
     outline: none;
 }
-#add-notes-modal button{
+#add-notes-modal button:last-child{
     height: 40px;
     width: 100%;
     background-color: var(--primary-color);
@@ -44,12 +44,12 @@ textarea{
     font-size: 1rem;
     text-transform: capitalize;
 }
-#add-notes-modal button:disabled{
+#add-notes-modal button:last-child:disabled{
     background-color: gray;
 }
-#add-notes-modal button:disabled:hover{
+#add-notes-modal button:last-child:disabled:hover{
     background-color: gray;
 }
-#add-notes-modal button:not(:disabled):hover{
+#add-notes-modal button:last-child:not(:disabled):hover{
     background-color: rgb(0, 181, 194)!important;
 }

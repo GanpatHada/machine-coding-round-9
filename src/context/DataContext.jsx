@@ -25,6 +25,19 @@ export function DataProvider({ children }) {
   const [watchLaterList, setWatchLaterList] = useState(getWatchLaterList());
   const [playlists, setPlaylists] = useState(getPlayLists());
   const [notes, setNotes] = useState(getMyNotes());
+  const[showMainModal,setShowMainModal]=useState(false)
+  const[mainModalMode,setMainModalMode]=useState(null)
+
+
+  const openMainModal=mode=>{
+    setMainModalMode(mode);
+    setShowMainModal(true);
+  }
+
+  const closeMainModal=()=>{
+    setMainModalMode(null);
+    setShowMainModal(false)
+  }
 
   const addToWatchLater = (videoId) => {
     let video = videos.find((video) => video._id === videoId);
@@ -47,6 +60,14 @@ export function DataProvider({ children }) {
     localStorage.setItem("playlists", JSON.stringify(tempPlaylists));
     setPlaylists(tempPlaylists);
   };
+
+  const deletePlaylist=(playlistId)=>{
+     let tempPlaylists=playlists.filter(playlist=>playlist._id!==playlistId)
+     localStorage.setItem("playlists", JSON.stringify(tempPlaylists));
+    setPlaylists(tempPlaylists);
+
+
+  }
 
   const addNote = (noteObj) => {
     let newNotes = [...notes, noteObj];
@@ -93,6 +114,9 @@ export function DataProvider({ children }) {
     setPlaylists(tempPlaylists);
   }
 
+  
+  
+
   return (
     <DataContext.Provider
       value={{
@@ -106,9 +130,14 @@ export function DataProvider({ children }) {
         search,
         setSearch,
         createNewPlaylist,
+        deletePlaylist,
         playlists,
         addToPlaylist,
         deleteVideoFromPlaylist,
+        openMainModal,
+        closeMainModal,
+        mainModalMode,
+        showMainModal
       }}
     >
       {children}

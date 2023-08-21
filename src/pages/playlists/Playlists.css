@@ -4,13 +4,19 @@
     border-radius: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 10px;
     padding-left: 10px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s ease-in-out;
 }
 .playlist-card:hover{
     filter: brightness(130%);
+}
+.playlist-card:hover .playlist-card-buttons{
+    transform: translateY(0px);
 }
 #playlist-content{
     
@@ -27,4 +33,27 @@
     padding: 0px;
     font-size: 2rem;
     color: white;
+}
+.playlist-card-buttons{
+    position:  absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    width: 85px;
+    justify-content: space-between;
+    transition: 0.2s ease-in-out;
+    transform: translateY(50px);
+}
+.playlist-card-buttons button{
+    background-color: rgba(0, 0, 0, 0.144);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: white;
+    transition: 0.2s ease-in-out;
+
+}
+.playlist-card-buttons button:hover{
+    background-color: rgba(0, 0, 0, 0.274);
 }

@@ -66,9 +66,9 @@ const NotesModal = ({ mode,noteId,videoId,closeNotesModal}) => {
 
   return (
     <div id="add-notes-modal" >
-      <span onClick={closeNotesModal}>
+      <button id="close-btn" onClick={closeNotesModal}>
         <GrClose />
-      </span>
+      </button>
       <h4>{mode}</h4>
       <textarea maxLength={120} ref={inputRef} value={note} onChange={handleNotesInputChange} placeholder="write note"></textarea> 
       <button disabled={isButtonDisabled()} onClick={hanldeNotesModalButton}>{mode.split(' ')[0]}</button>

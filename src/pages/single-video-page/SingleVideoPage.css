@@ -54,7 +54,7 @@
 #playlist-modal-section{
     right: 60px;
 }
-#single-video-page button{
+#single-video-page #actions button{
     display: flex;
     align-items: center;
     justify-content: center;

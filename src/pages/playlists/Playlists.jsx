@@ -1,24 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Playlists.css";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
 import { DataContext } from "../../context/DataContext";
 import { Link, useNavigate } from "react-router-dom";
+import {AiFillEdit} from 'react-icons/ai'
 const Playlists = () => {
-  const navigate=useNavigate()  
-  const { playlists } = useContext(DataContext);
+  const navigate = useNavigate();
+  const { playlists,deletePlaylist,openMainModal} = useContext(DataContext);
+  const handlePlaylistClick = (playlistId) =>
+    navigate(`/playlists/${playlistId}`);
 
-  const handlePlaylistClick=(playlistId)=>navigate(`/playlists/${playlistId}`)
+  
 
-  const getRandomDarkColor = () => {
-    const red = Math.floor(Math.random() * 128); // Keep red component lower for dark colors
-    const green = Math.floor(Math.random() * 128); // Keep green component lower for dark colors
-    const blue = Math.floor(Math.random() * 128); // Keep blue component lower for dark colors
+  const handleDeletePlaylist=(e,playlistId)=>{
+    e.stopPropagation()
+    deletePlaylist(playlistId);
+  }
 
-    // Convert the RGB components to a CSS color string
-    const darkColor = `rgb(${red}, ${green}, ${blue})`;
-
-    return darkColor;
-  };
+  const handleEditPlaylist=(e,playlistId)=>{
+    e.stopPropagation();
+    openMainModal(playlistId);
+  }
 
   return (
     <main id="playlists">
@@ -28,17 +30,21 @@ const Playlists = () => {
           {playlists.map((playlist) => {
             return (
               <div
-                onClick={()=>handlePlaylistClick(playlist._id)}
+                onClick={() => handlePlaylistClick(playlist._id)}
                 key={playlist._id}
-                style={{ backgroundColor: getRandomDarkColor() }}
+                style={{ backgroundColor: playlist.backgroundColor }}
                 className="playlist-card"
               >
                 <h4>{playlist.name}</h4>
+                <div className="playlist-card-buttons">
+                  <button onClick={(e)=>handleEditPlaylist(e,playlist._id)} title={`Edit ${playlist.name}`} className="all-centered"><AiFillEdit/></button>
+                  <button onClick={(e)=>handleDeletePlaylist(e,playlist._id)} title={`Delete ${playlist.name}`} className="all-centered"><AiFillDelete/></button>
+                </div>
               </div>
             );
           })}
 
-          <div className="playlist-card all-centered" id="new-playlist-card">
+          <div className="playlist-card all-centered" id="new-playlist-card" onClick={()=>openMainModal('create')}>
             <AiOutlinePlus />
           </div>
         </div>

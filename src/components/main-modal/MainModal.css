@@ -1,0 +1,49 @@
+#main-modal{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.479);
+    backdrop-filter: blur(1px);
+}
+#main-modal-content{
+    width: 400px;
+    box-shadow: rgba(255, 255, 255, 0.062) 1.95px 1.95px 2px 5px,rgba(255, 255, 255, 0.062) -1.95px -1.95px 2px 5px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    position: relative;
+    
+}
+
+#main-modal-content > *{
+    margin-bottom: 20px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+#main-modal-content p{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    color: yellow;
+    height: fit-content;
+    padding: 0px 10px;
+}
+
+#main-modal-content >input{
+    background-color: rgba(128, 128, 128, 0.26);
+    border: none;
+    color: white;
+    padding: 0px 20px;
+}
+#main-modal-content > *:last-child{
+    margin-bottom: 0px;
+}

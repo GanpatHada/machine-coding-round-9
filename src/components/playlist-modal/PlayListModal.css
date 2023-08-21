@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     color: white;
-    width: 240px;
+    width: 260px;
     position: relative;
 }
 #playlist-modal hr{
@@ -15,8 +15,9 @@
 #playlist-modal section{
     padding: 20px;
 }
+
 #playlist-modal :where(h4,h5){
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 #playlist-modal input{
     height: 36px;
@@ -28,7 +29,7 @@
     width: 100%;
     font-size: 0.9rem;
 }
-#playlist-modal button{
+#playlist-modal #create-new-section button{
     height: 36px;
     width: 100%;
     border-radius: 5px;
@@ -38,13 +39,13 @@
     margin: 10px 0px;
     background-color: var(--primary-color);
 }
-#playlist-modal button:hover{
+#playlist-modal #create-new-section button:hover{
     background-color: var(--primary-color)!important;
 }
-#playlist-modal button:disabled:hover{
+#playlist-modal #create-new-section button:disabled:hover{
     background-color: gray!important;
 }
-#playlist-modal button:disabled{
+#playlist-modal #create-new-section button:disabled{
     background-color: gray;
     cursor: not-allowed;
 }
@@ -69,12 +70,24 @@
     font-family: Arial, Helvetica, sans-serif;
    
 }
-#playlist-modal #close-btn{
-   filter: invert();
+#close-btn{
    position: absolute;
-   top: 10px;
-   right: 10px;
+   top: 5px;
+   right: 5px;
    cursor: pointer;
+   height: 30px;
+   width: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   font-size: 0.8rem;
+   filter: invert();
+   
+}
+#close-btn:hover{
+    background-color: rgba(128, 128, 128, 0.39);
+
 }
 #playlist-modal li:hover::after{
     content: 'add';
